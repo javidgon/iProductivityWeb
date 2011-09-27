@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Categories">
+    <resultMap id="categoryResult" class="model.CategoryImpl">
+        <result column="name" property="name" />
+        <result column="creation_date" property="creation_date" />
+    </resultMap>
+
+    <select id="getCategories" resultMap="categoryResult">
+SELECT *
+FROM Category
+    </select>
+
+        <select id="getCategory" resultClass="String" parameterClass="String">
+SELECT name
+FROM Category WHERE name = #name#
+        </select>
+
+    <delete id="deleteCategory" parameterClass="String">
+DELETE FROM Category WHERE name = #name#
+    </delete>
+    <insert id="insertCategory" parameterClass="model.CategoryImpl">
+INSERT into Category VALUES (#name#,#creation_date#)
+    </insert>
+</sqlMap>

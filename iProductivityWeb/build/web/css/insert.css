@@ -1,0 +1,25 @@
+/* 
+    Document   : insert
+    Created on : 20-may-2011, 13:07:28
+    Author     : javidgon
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+
+.insert textarea {width: 260px; height: 75px; padding: 4px; max-width:260px; max-height:75px;}
+.insert input.text {width: 260px; padding: 3px 2px 2px 2px; font-size: 1.2em; font-weight: bold; color:black}
+.insert th {vertical-align: top; padding-top: 8px; width: 80px; line-height: 1.2em; font-size: 1.2em; font-weight:normal}
+.insert{
+    margin-top: 3%;
+    margin-left:3%;
+
+}

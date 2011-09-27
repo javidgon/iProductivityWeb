@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Blacklists">
+    <resultMap id="blackListResult" class="model.BlackListImpl">
+        <result column="ip" property="ip" />
+        <result column="date" property="date" />
+    </resultMap>
+
+    <select id="getBlackList" resultMap="blackListResult">
+SELECT *
+FROM Blacklist WHERE ip = #ip#
+    </select>
+
+    <delete id="deleteBlackList" parameterClass="model.BlackListImpl">
+DELETE FROM Blacklist WHERE ip = #ip#
+    </delete>
+    <insert id="insertBlackList" parameterClass="model.BlackListImpl">
+INSERT into BlackList(ip,date) VALUES (#ip#,#date#)
+    </insert>
+</sqlMap>

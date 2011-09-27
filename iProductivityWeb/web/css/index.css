@@ -1,0 +1,123 @@
+/* 
+    Document   : index
+    Created on : 19-may-2011, 17:42:03
+    Author     : javidgon
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+
+@font-face {
+    font-family: 'Walkway';
+    font-style: normal;
+    src: url(Walkway_Bold.ttf);
+
+}
+
+body{ /* Color de fondo. */
+
+      background-color: #FFFFFF;
+      font-family: 'Walkway';
+
+}
+
+.index input.text {width: 260px; padding: 3px 2px 2px 2px; font-size: 1.2em; font-weight: bold; color:#8FB840}
+.index th {vertical-align: top; padding-top: 8px; width: 80px; line-height: 1.2em; font-size: 1.2em; font-weight:normal}
+.index h1{
+    font-size: 2em;
+    font-weight: normal;
+    color:#8FB840;
+}
+
+.index{
+    margin-top:5%;
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.index legend{
+    font-size: 2em;
+    font-weight: normal;
+    color:#8FB840;
+}
+
+.index fieldset{
+    color:#8FB840;
+    border: 1px solid #8FB840;
+    padding:5%;
+}
+
+.footer{
+    vertical-align: bottom;
+    text-align: center;
+    color:#8FB840;
+}
+
+#records table{
+    max-width:60%;
+    min-width: 40%;
+}
+
+#records th{
+    padding-bottom: 2%;
+    text-align: left;
+}
+
+#records td{
+    width:5%;
+    padding-right: 2%;
+
+}
+
+#ranking table{
+    min-width: 40%;
+}
+
+#ranking th{
+    padding-bottom: 2%;
+    text-align: left;
+}
+
+#ranking td{
+    
+    text-align: left;
+
+
+}
+#image{
+
+    padding-left: 8%;
+    padding-top: 3%;
+
+}
+
+
+#problem{
+
+    margin-top:10%;
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+
+
+}
+
+a{
+   color:#77994C;
+   text-decoration: none;
+
+}
+a:hover{
+    text-decoration: underline;
+
+
+}

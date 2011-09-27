@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Logs">
+    <resultMap id="logResult" class="model.LogImpl">
+        <result column="message" property="message" />
+        <result column="user" property="user" />
+        <result column="creation_date" property="creation_date" />
+    </resultMap>
+
+    <select id="getLogs" resultMap="logResult">
+SELECT *
+FROM Log
+    </select>  
+
+    <select id="getLogsForUser" resultMap="logResult">
+SELECT *
+FROM Log WHERE user = #email#
+    </select>
+
+    <delete id="deleteLog" parameterClass="model.LogImpl">
+DELETE FROM Log WHERE message = #message# AND user = #user#
+    </delete>
+
+    <insert id="insertLog" parameterClass="model.LogImpl">
+INSERT into Log (message,user,creation_date) VALUES (#message#,#user#,#creation_date#)
+    </insert>
+</sqlMap>
+
+

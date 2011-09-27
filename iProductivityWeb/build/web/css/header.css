@@ -1,0 +1,24 @@
+/* 
+    Document   : header
+    Created on : 19-may-2011, 17:45:27
+    Author     : javidgon
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+
+#header{ /* Cabecera de inicio. */
+         background-color: #8FB840;
+         min-height: 5%;
+         padding:0.8%;
+         color:white;
+
+}

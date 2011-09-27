@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Incidents">
+    <resultMap id="incidentResult" class="model.IncidentImpl">
+        <result column="message" property="message" />
+        <result column="user" property="user" />
+        <result column="creation_date" property="creation_date" />
+    </resultMap>
+
+    <select id="getIncidents" resultMap="incidentResult">
+SELECT *
+FROM Incident
+    </select>
+
+    <select id="getIncidentsForUser" resultMap="incidentResult">
+SELECT *
+FROM Incident WHERE user = #email#
+    </select>
+
+    <delete id="deleteIncident" parameterClass="model.IncidentImpl">
+DELETE FROM Incident WHERE message = #message# AND user = #user# AND creation_date = #creation_date#
+    </delete>
+
+    <insert id="insertIncident" parameterClass="model.IncidentImpl">
+INSERT into Incident (message,user,creation_date) VALUES (#message#,#user#,#creation_date#)
+    </insert>
+</sqlMap>
+
+

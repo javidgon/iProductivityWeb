@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Tasks">
+    <resultMap id="taskResult" class="model.TaskImpl">
+        <result column="description" property="description" />
+        <result column="type" property="type" />
+        <result column="done" property="done" />
+        <result column="minutes" property="minutes" />
+        <result column="user" property="user" />
+        <result column="creation_date" property="creation_date" />
+        <result column="finalization_date" property="finalization_date" />
+    </resultMap>
+
+    <select id="getTasks" resultMap="taskResult">
+SELECT description,type,done,minutes,user,creation_date,finalization_date
+FROM Task
+</select>
+
+    <select id="getTasksForUser" resultMap="taskResult">
+SELECT description,type,done,minutes,user,creation_date,finalization_date
+FROM Task WHERE user = #email#
+</select>
+
+    <delete id="deleteTask" parameterClass="list" >
+        DELETE FROM Task
+        <dynamic prepend="WHERE">
+        <iterate open="(" close=")" conjunction="AND">
+    description= #[0]# AND user= #[1]#
+            </iterate>
+        </dynamic>
+    </delete>
+
+        <update id="updateTask" parameterClass="model.TaskImpl">
+UPDATE Task SET type = #type#, minutes = #minutes#, done = #done#
+WHERE description = #description# and user = #user#
+    </update>
+        <insert id="insertTask" parameterClass="model.TaskImpl">
+INSERT into Task (description,type,done,minutes,user,creation_date) VALUES (#description#,#type#,#done#,#minutes#,#user#,#creation_date#)
+    </insert>
+
+    <update id="doTask" parameterClass="list" >
+        UPDATE Task SET Done = 'Yes', finalization_date = #[2]#
+        <dynamic prepend="WHERE">
+        <iterate open="(" close=")" conjunction="AND">
+    description= #[0]# AND user= #[1]#
+            </iterate>
+        </dynamic>
+    </update>
+
+</sqlMap>
+

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="USERS">
+    <resultMap id="userResult" class="model.UserImpl">
+        <result column="email" property="email" />
+        <result column="name" property="name" />
+        <result column="surname" property="surname" />
+        <result column="password" property="password" />
+        <result column="type" property="type" />
+        <result column="boss" property="boss" />
+        <result column="creation_date" property="creation_date"/>
+    </resultMap>
+
+
+    <select id="getUsers" resultMap="userResult">
+SELECT *
+FROM User
+    </select>
+    <select id="getUsersByCoordinator" resultMap="userResult" parameterClass="String">
+SELECT *
+FROM User WHERE boss = #email#
+    </select>
+    <select id="getUser" resultClass="model.UserImpl" parameterClass="String">
+SELECT *
+FROM User WHERE email = #email#
+    </select>
+    <select id="getUsersByType" resultMap="userResult" parameterClass="int">
+SELECT *
+FROM User WHERE type = #i#
+    </select>
+    <select id="getType" resultClass="int" parameterClass="String">
+SELECT type
+FROM User WHERE email = #email#
+    </select>
+    <select id="loginUser" parameterClass="list" resultClass="String" >
+        Select name FROM User
+        <dynamic prepend="WHERE">
+            <iterate open="(" close=")" conjunction="AND">
+    email= #[0]# AND password= #[1]#
+            </iterate>
+        </dynamic>
+    </select>
+    <update id="updateUser" parameterClass="model.UserImpl">
+UPDATE User SET name = #name#, surname = #surname#, password = #password#
+WHERE email = #email#
+    </update>
+    <delete id="deleteUser" parameterClass="String">
+DELETE FROM User WHERE email = #email#
+    </delete>
+    <insert id="insertUser" parameterClass="model.UserImpl">
+INSERT into User (email,password,name,surname,type,boss,creation_date) VALUES (#email#,#password#,#name#,#surname#,#type#,#boss#,#creation_date#)
+    </insert>
+</sqlMap>
+
+

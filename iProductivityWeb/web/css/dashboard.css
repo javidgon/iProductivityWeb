@@ -1,0 +1,61 @@
+/* 
+    Document   : dashboard
+    Created on : 19-may-2011, 18:24:38
+    Author     : javidgon
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+
+.dashboard{
+       margin-left:3%;
+
+}
+
+.dashboard h1{
+    font-size: 2em;
+    font-weight: normal;
+    color:#8FB840;
+}
+
+.dashboard table{
+    min-width: 30%;
+
+}
+
+.success {
+       color: #4F8A10;
+       background-color: #DFF2BF;
+       background-image:url('success.png');
+}
+
+.success, .info, .alert {
+       font-family:Arial, Helvetica, sans-serif;
+       font-size:13px;
+       border: 1px solid;
+       margin: 20px 0px;
+       padding:15px 10px 15px 50px;
+       background-repeat: no-repeat;
+       background-position: 10px center;
+       max-width: 30%;
+}
+
+.info {
+       color: #00529B;
+       background-color: #BDE5F8;
+       background-image: url('edit.png');
+}
+
+.alert {
+       color: #9F6000;
+       background-color: #FEEFB3;
+       background-image: url('alert.png');
+}
